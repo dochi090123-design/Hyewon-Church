@@ -381,12 +381,10 @@ main {
     margin-bottom: 1rem;
 }
 
-/* 신 강조 강조 스타일 (강혜원, 신 강혜원) */
-.god-highlight {
-    font-weight: 900 !important;
+/* 본문 내 신 이름 강조 (진하게 스타일) */
+strong {
+    font-weight: 900;
     color: #000000;
-    font-size: 1.05em;
-    letter-spacing: 0.3px;
 }
 
 .section-grid {
