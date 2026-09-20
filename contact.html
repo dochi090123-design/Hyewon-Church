@@ -6,7 +6,7 @@
     <title>신도 커뮤니티 - 세계의 진리와 자비의 강혜원교</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Noto+Serif+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Noto+Serif+KR:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,20 +18,20 @@
 
             <div style="display: flex; align-items: center;">
                 <ul class="nav-links desktop-links">
-                    <li><a href="index.html"><strong class="god-highlight">강혜원</strong>교</a></li>
-                    <li><a href="about.html"><strong class="god-highlight">강혜원</strong>교의 역사</a></li>
-                    <li><a href="projects.html"><strong class="god-highlight">신 강혜원</strong>의 위대한 업적</a></li>
+                    <li><a href="index.html">강혜원교</a></li>
+                    <li><a href="about.html">강혜원교의 역사</a></li>
+                    <li><a href="projects.html">신 강혜원의 위대한 업적</a></li>
                     <li><a href="contact.html" class="active">신도 커뮤니티</a></li>
                 </ul>
                 <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="메뉴 열기">☰</button>
             </div>
 
             <div class="mobile-dropdown" id="mobile-dropdown">
-                <div class="mobile-header-title">⚙ 세계의 진리와 자비의 <strong class="god-highlight">강혜원</strong>교</div>
+                <div class="mobile-header-title">⚙ 세계의 진리와 자비의 강혜원교</div>
                 <ul class="mobile-menu-row">
-                    <li><a href="index.html"><strong class="god-highlight">강혜원</strong>교</a></li>
-                    <li><a href="about.html"><strong class="god-highlight">강혜원</strong>교의 역사</a></li>
-                    <li><a href="projects.html"><strong class="god-highlight">신 강혜원</strong>의 위대한 업적</a></li>
+                    <li><a href="index.html">강혜원교</a></li>
+                    <li><a href="about.html">강혜원교의 역사</a></li>
+                    <li><a href="projects.html">신 강혜원의 위대한 업적</a></li>
                     <li><a href="contact.html" class="active">신도 커뮤니티</a></li>
                 </ul>
             </div>
@@ -58,7 +58,7 @@
             <ul class="post-list" id="post-list">
                 <li class="post-item">
                     <div class="post-title">
-                        <span><strong class="god-highlight">강혜원</strong>님의 은총으로 구원받았습니다.</span>
+                        <span><strong>강혜원</strong>님의 은총으로 구원받았습니다.</span>
                         <span class="post-author">원로신도</span>
                     </div>
                     <div class="post-content">오늘도 정교하게 회전하는 톱니바퀴 소리를 들으며 마음의 평화를 얻습니다. 믿음이 곧 진리입니다.</div>
@@ -106,7 +106,7 @@
                 <!-- 로그인 버튼 -->
                 <button type="submit" class="cta-btn" style="width: 100%; margin-top: 1rem;">로그인</button>
                 
-                <!-- 요구사항 2번: 로그인 버튼 아래에 위치하는 로그아웃 버튼 -->
+                <!-- 로그인 버튼 아래 위치하는 로그아웃 버튼 -->
                 <button type="button" class="btn-logout-modal" id="modal-logout-btn" style="display:none;" onclick="logout()">로그아웃</button>
             </form>
         </div>
@@ -132,11 +132,10 @@
     </div>
 
     <footer>
-        <p>세계의 진리와 자비의 <strong class="god-highlight">강혜원</strong>교 &copy; ALL RIGHTS RESERVED.</p>
+        <p>세계의 진리와 자비의 <strong>강혜원</strong>교 &copy; ALL RIGHTS RESERVED.</p>
     </footer>
 
     <script>
-        // LocalStorage를 활용하여 회원정보 및 로그인 상태를 브라우저에 지속적으로 유지
         function getUsers() {
             return JSON.parse(localStorage.getItem('gang_users') || '{}');
         }
@@ -157,7 +156,6 @@
             }
         }
 
-        // 페이지 로드 시 로그인 상태 동기화 및 표시
         function updateUI() {
             const currentUser = getCurrentUser();
             const userStatus = document.getElementById('user-status');
@@ -276,7 +274,6 @@
                 .replace(/'/g, "&#039;");
         }
 
-        // 페이지 초기화 실행
         window.onload = function() {
             updateUI();
         };
