@@ -18,20 +18,20 @@
 
             <div style="display: flex; align-items: center;">
                 <ul class="nav-links desktop-links">
-                    <li><a href="index.html">강혜원교</a></li>
-                    <li><a href="about.html">강혜원교의 역사</a></li>
-                    <li><a href="projects.html">신 강혜원의 위대한 업적</a></li>
+                    <li><a href="index.html"><strong class="god-highlight">강혜원</strong>교</a></li>
+                    <li><a href="about.html"><strong class="god-highlight">강혜원</strong>교의 역사</a></li>
+                    <li><a href="projects.html"><strong class="god-highlight">신 강혜원</strong>의 위대한 업적</a></li>
                     <li><a href="contact.html" class="active">신도 커뮤니티</a></li>
                 </ul>
                 <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="메뉴 열기">☰</button>
             </div>
 
             <div class="mobile-dropdown" id="mobile-dropdown">
-                <div class="mobile-header-title">⚙ 세계의 진리와 자비의 강혜원교</div>
+                <div class="mobile-header-title">⚙ 세계의 진리와 자비의 <strong class="god-highlight">강혜원</strong>교</div>
                 <ul class="mobile-menu-row">
-                    <li><a href="index.html">강혜원교</a></li>
-                    <li><a href="about.html">강혜원교의 역사</a></li>
-                    <li><a href="projects.html">신 강혜원의 위대한 업적</a></li>
+                    <li><a href="index.html"><strong class="god-highlight">강혜원</strong>교</a></li>
+                    <li><a href="about.html"><strong class="god-highlight">강혜원</strong>교의 역사</a></li>
+                    <li><a href="projects.html"><strong class="god-highlight">신 강혜원</strong>의 위대한 업적</a></li>
                     <li><a href="contact.html" class="active">신도 커뮤니티</a></li>
                 </ul>
             </div>
@@ -53,13 +53,12 @@
                 <span id="user-status" style="font-size: 0.85rem; align-self: center; color: var(--text-sub);">로그인이 필요합니다.</span>
                 <button class="btn-small" id="login-btn" onclick="openModal('login-modal')">로그인</button>
                 <button class="btn-small" id="signup-btn" onclick="openModal('signup-modal')">회원가입</button>
-                <button class="btn-small" id="logout-btn" style="display:none;" onclick="logout()">로그아웃</button>
             </div>
 
             <ul class="post-list" id="post-list">
                 <li class="post-item">
                     <div class="post-title">
-                        <span>강혜원님의 은총으로 구원받았습니다.</span>
+                        <span><strong class="god-highlight">강혜원</strong>님의 은총으로 구원받았습니다.</span>
                         <span class="post-author">원로신도</span>
                     </div>
                     <div class="post-content">오늘도 정교하게 회전하는 톱니바퀴 소리를 들으며 마음의 평화를 얻습니다. 믿음이 곧 진리입니다.</div>
@@ -104,7 +103,11 @@
                     <label>비밀번호</label>
                     <input type="password" id="login-pw" required>
                 </div>
+                <!-- 로그인 버튼 -->
                 <button type="submit" class="cta-btn" style="width: 100%; margin-top: 1rem;">로그인</button>
+                
+                <!-- 요구사항 2번: 로그인 버튼 아래에 위치하는 로그아웃 버튼 -->
+                <button type="button" class="btn-logout-modal" id="modal-logout-btn" style="display:none;" onclick="logout()">로그아웃</button>
             </form>
         </div>
     </div>
@@ -129,12 +132,51 @@
     </div>
 
     <footer>
-        <p>세계의 진리와 자비의 강혜원교 &copy; ALL RIGHTS RESERVED.</p>
+        <p>세계의 진리와 자비의 <strong class="god-highlight">강혜원</strong>교 &copy; ALL RIGHTS RESERVED.</p>
     </footer>
 
     <script>
-        let currentUser = null;
-        const users = {}; 
+        // LocalStorage를 활용하여 회원정보 및 로그인 상태를 브라우저에 지속적으로 유지
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('gang_users') || '{}');
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem('gang_users', JSON.stringify(users));
+        }
+
+        function getCurrentUser() {
+            return localStorage.getItem('gang_current_user');
+        }
+
+        function setCurrentUser(username) {
+            if (username) {
+                localStorage.setItem('gang_current_user', username);
+            } else {
+                localStorage.removeItem('gang_current_user');
+            }
+        }
+
+        // 페이지 로드 시 로그인 상태 동기화 및 표시
+        function updateUI() {
+            const currentUser = getCurrentUser();
+            const userStatus = document.getElementById('user-status');
+            const loginBtn = document.getElementById('login-btn');
+            const signupBtn = document.getElementById('signup-btn');
+            const modalLogoutBtn = document.getElementById('modal-logout-btn');
+
+            if (currentUser) {
+                userStatus.innerText = `신도 [${currentUser}] 님 접속 중`;
+                loginBtn.innerText = '내 정보 / 로그아웃';
+                signupBtn.style.display = 'none';
+                modalLogoutBtn.style.display = 'block';
+            } else {
+                userStatus.innerText = '로그인이 필요합니다.';
+                loginBtn.innerText = '로그인';
+                signupBtn.style.display = 'inline-block';
+                modalLogoutBtn.style.display = 'none';
+            }
+        }
 
         function toggleMenu() {
             const dropdown = document.getElementById('mobile-dropdown');
@@ -150,6 +192,7 @@
             e.preventDefault();
             const id = document.getElementById('signup-id').value;
             const pw = document.getElementById('signup-pw').value;
+            const users = getUsers();
 
             if (users[id]) {
                 alert('이미 선택된 신도명입니다.');
@@ -157,38 +200,40 @@
             }
 
             users[id] = pw;
+            saveUsers(users);
             alert('입교를 환영합니다. 로그인해 주십시오.');
             closeModal('signup-modal');
+            document.getElementById('signup-id').value = '';
+            document.getElementById('signup-pw').value = '';
         }
 
         function handleLogin(e) {
             e.preventDefault();
             const id = document.getElementById('login-id').value;
             const pw = document.getElementById('login-pw').value;
+            const users = getUsers();
 
             if (users[id] && users[id] === pw) {
-                currentUser = id;
-                document.getElementById('user-status').innerText = `신도 [${currentUser}] 님 접속 중`;
-                document.getElementById('login-btn').style.display = 'none';
-                document.getElementById('signup-btn').style.display = 'none';
-                document.getElementById('logout-btn').style.display = 'inline-block';
-                alert(`환영합니다, ${currentUser} 신도님.`);
+                setCurrentUser(id);
+                updateUI();
+                alert(`환영합니다, ${id} 신도님.`);
                 closeModal('login-modal');
+                document.getElementById('login-id').value = '';
+                document.getElementById('login-pw').value = '';
             } else {
                 alert('신도명 또는 비밀번호가 일치하지 않습니다.');
             }
         }
 
         function logout() {
-            currentUser = null;
-            document.getElementById('user-status').innerText = '로그인이 필요합니다.';
-            document.getElementById('login-btn').style.display = 'inline-block';
-            document.getElementById('signup-btn').style.display = 'inline-block';
-            document.getElementById('logout-btn').style.display = 'none';
+            setCurrentUser(null);
+            updateUI();
+            closeModal('login-modal');
             alert('로그아웃되었습니다.');
         }
 
         function handleFabClick() {
+            const currentUser = getCurrentUser();
             if (!currentUser) {
                 alert('신도 커뮤니티에 글을 남기시려면 먼저 회원가입 및 로그인을 완료해야 합니다.');
                 openModal('login-modal');
@@ -199,6 +244,7 @@
 
         function handlePost(e) {
             e.preventDefault();
+            const currentUser = getCurrentUser();
             const title = document.getElementById('post-title').value;
             const content = document.getElementById('post-content').value;
 
@@ -229,6 +275,11 @@
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
         }
+
+        // 페이지 초기화 실행
+        window.onload = function() {
+            updateUI();
+        };
     </script>
 </body>
 </html>
