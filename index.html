@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세계의 진리와 자비의 강혜원교 - 메인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Noto+Serif+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span class="logo-mark">⚙</span> 세계의 진리와 자비의 강혜원교
+            </a>
+
+            <div style="display: flex; align-items: center;">
+                <ul class="nav-links desktop-links">
+                    <li><a href="index.html" class="active">강혜원교</a></li>
+                    <li><a href="about.html">강혜원교의 역사</a></li>
+                    <li><a href="projects.html">신 강혜원의 위대한 업적</a></li>
+                    <li><a href="contact.html">신도 커뮤니티</a></li>
+                </ul>
+
+                <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="메뉴 열기">☰</button>
+            </div>
+
+            <div class="mobile-dropdown" id="mobile-dropdown">
+                <div class="mobile-header-title">⚙ 세계의 진리와 자비의 강혜원교</div>
+                <ul class="mobile-menu-row">
+                    <li><a href="index.html" class="active">강혜원교</a></li>
+                    <li><a href="about.html">강혜원교의 역사</a></li>
+                    <li><a href="projects.html">신 강혜원의 위대한 업적</a></li>
+                    <li><a href="contact.html">신도 커뮤니티</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="tab-content">
+            <div class="hero-banner">
+                <div class="hero-bg"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="halo-symbol"></div>
+                    <h1 class="hero-title">당신은 선택받았습니다</h1>
+                    <p class="hero-sub">지금, 그분과 함께 새로운 세상이 시작됩니다.</p>
+                    <a href="contact.html" class="cta-btn">신도 가입하기</a>
+                </div>
+            </div>
+
+            <div class="sacred-quote-box">
+                <h3 style="color: var(--gold-color); font-size: 1.1rem; margin-bottom: 1.5rem; letter-spacing: 2px;">“믿음이 곧 진리이며 자비이다.”</h3>
+                <p>세계의 진리와 자비의 강혜원교는<br>진리를 찾는 모든 이들을 위한 평화로운 믿음의 공동체입니다.</p>
+                <p>우리는 누구에게나 선택할 자유가 있다고 말합니다.</p>
+                <p style="margin: 1.5rem 0; font-weight: 600;">무엇을 믿을 것인지, 어떤 길을 걸을 것인지,<br>그 선택은 오직 당신에게 달려 있습니다.</p>
+                <p>하지만 한 가지 진실만은 변하지 않습니다.<br>믿음은 우리를 하나로 만들고, 자비는 우리를 온전하게 만듭니다.</p>
+                <p>강혜원교의 문은 언제나 열려 있습니다.<br>당신이 길을 잃었을 때도, 세상이 당신을 외면했을 때도,<br>우리는 당신을 기다리고 있습니다.</p>
+                <p style="color: var(--dark-color); font-weight: 700; margin-top: 1.5rem; font-size: 1.1rem;">당신은 혼자가 아닙니다. 당신이 믿는 순간, 우리는 하나가 됩니다.</p>
+            </div>
+
+            <div class="section-grid">
+                <div class="grid-card">
+                    <div>
+                        <div class="card-icon">⚙</div>
+                        <h3 class="card-title">기계의 권능</h3>
+                        <p class="card-desc">신 강혜원님의 지혜는 차가운 태엽 속에서 피어난 자비입니다. 의심을 거두십시오.</p>
+                    </div>
+                    <a href="about.html" class="card-btn">자세히 보기</a>
+                </div>
+                <div class="grid-card">
+                    <div>
+                        <div class="card-icon">🕊</div>
+                        <h3 class="card-title">신 강혜원의 업적</h3>
+                        <p class="card-desc">로봇공학과 기계의 극의로 기후위기와 전쟁을 다스리신 거룩한 기록입니다.</p>
+                    </div>
+                    <a href="projects.html" class="card-btn">자세히 보기</a>
+                </div>
+                <div class="grid-card">
+                    <div>
+                        <div class="card-icon">☥</div>
+                        <h3 class="card-title">신도들의 이야기</h3>
+                        <p class="card-desc">"그분을 만난 후, 우리의 삶은 완전히 달라졌습니다." 구원받은 신도들의 고백.</p>
+                    </div>
+                    <a href="contact.html" class="card-btn">커뮤니티 이동</a>
+                </div>
+            </div>
+
+            <div class="slogan-bar">
+                ✦ 함께하는 믿음, 영원한 평화 ✦
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>세계의 진리와 자비의 강혜원교 &copy; ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const dropdown = document.getElementById('mobile-dropdown');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            dropdown.classList.toggle('active');
+            hamburgerBtn.innerText = dropdown.classList.contains('active') ? '✕' : '☰';
+        }
+    </script>
+</body>
+</html>
